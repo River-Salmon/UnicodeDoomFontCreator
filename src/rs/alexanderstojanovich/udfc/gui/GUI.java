@@ -1072,10 +1072,18 @@ public class GUI extends javax.swing.JFrame {
             if (!guiLogic.getJobTaskList().contains(GUILogic.JPN_Kanji1)) {
                 guiLogic.getJobTaskList().add(GUILogic.JPN_Kanji1);
             }
+            if (!guiLogic.getJobTaskList().contains(GUILogic.JPN_Kanji2)) {
+                guiLogic.getJobTaskList().add(GUILogic.JPN_Kanji2);
+            }
+            if (!guiLogic.getJobTaskList().contains(GUILogic.JPN_Kanji2)) {
+                guiLogic.getJobTaskList().add(GUILogic.JPN_Kanji2);
+            }
         } else {
             guiLogic.getJobTaskList().remove(GUILogic.JPN_Hiragana);
             guiLogic.getJobTaskList().remove(GUILogic.JPN_Katakana);
             guiLogic.getJobTaskList().remove(GUILogic.JPN_Kanji1);
+            guiLogic.getJobTaskList().remove(GUILogic.JPN_Kanji2);
+            guiLogic.getJobTaskList().remove(GUILogic.JPN_Kanji3);
         }
     }//GEN-LAST:event_chCoverJapaneseActionPerformed
 

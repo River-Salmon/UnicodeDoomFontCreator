@@ -93,6 +93,8 @@ public class GUILogic {
     public static final CharRange JPN_Hiragana = new CharRange(0x3041, 0x3069);
     public static final CharRange JPN_Katakana = new CharRange(0x30A0, 0x30FF);
     public static final CharRange JPN_Kanji1 = new CharRange(0x3400, 0x4db5);
+    public static final CharRange JPN_Kanji2 = new CharRange(0x4e00, 0x9fcb);
+    public static final CharRange JPN_Kanji3 = new CharRange(0xf900, 0xfa6a);
 
     // pair of character ranges used for coverage
     private List<CharRange> jobTaskList = new LinkedList<>();
