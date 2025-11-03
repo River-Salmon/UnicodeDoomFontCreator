@@ -89,6 +89,10 @@ public class GUILogic {
     public static final CharRange CYRILLIC = new CharRange(0x0400, 0x04FF);
     // and greek
     public static final CharRange GREEK = new CharRange(0x0370, 0x03FF);
+    
+    public static final CharRange JPN_Hiragana = new CharRange(0x3041, 0x3069);
+    public static final CharRange JPN_Katakana = new CharRange(0x30A0, 0x30FF);
+    public static final CharRange JPN_Kanji1 = new CharRange(0x3400, 0x4db5);
 
     // pair of character ranges used for coverage
     private List<CharRange> jobTaskList = new LinkedList<>();

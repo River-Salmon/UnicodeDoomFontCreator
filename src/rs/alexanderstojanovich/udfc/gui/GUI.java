@@ -128,18 +128,18 @@ public class GUI extends javax.swing.JFrame {
         firstCharSemicolon = new javax.swing.JLabel();
         textFirstChar = new javax.swing.JSpinner();
         textLastChar = new javax.swing.JSpinner();
-        radioPanel = new javax.swing.JPanel();
-        radioCharCoverage = new javax.swing.JRadioButton();
-        radioCharRange = new javax.swing.JRadioButton();
         charCoveragePanel = new javax.swing.JPanel();
         chCoverLatin = new javax.swing.JCheckBox();
         chCoverLatinExt = new javax.swing.JCheckBox();
         chCoverCyrillic = new javax.swing.JCheckBox();
         chCoverGreek = new javax.swing.JCheckBox();
+        chCoverJapanese = new javax.swing.JCheckBox();
+        radioPanel = new javax.swing.JPanel();
+        radioCharCoverage = new javax.swing.JRadioButton();
+        radioCharRange = new javax.swing.JRadioButton();
         fontTestLabel = new javax.swing.JLabel();
         fontTestTextField = new javax.swing.JTextField();
         fontPreviewButton = new javax.swing.JButton();
-        udfc_suppd_label = new javax.swing.JLabel();
         effectsPanel = new javax.swing.JPanel();
         fgLabel = new javax.swing.JLabel();
         fgButton = new javax.swing.JButton();
@@ -184,8 +184,6 @@ public class GUI extends javax.swing.JFrame {
         setTitle("Unicode Doom Font Creator - KOREANS");
         setResizable(false);
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.Y_AXIS));
-
-        fontPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Font", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
         fontNameLabel.setText("Font:");
 
@@ -235,8 +233,6 @@ public class GUI extends javax.swing.JFrame {
                 textMultiplierStateChanged(evt);
             }
         });
-
-        charRangePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Char Range (ASCII)", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
         lastCharSemicolon.setText("Last Char:");
         lastCharSemicolon.setEnabled(false);
@@ -291,7 +287,42 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        radioPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Creation Mode", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        chCoverLatin.setText("Latin");
+        chCoverLatin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chCoverLatinActionPerformed(evt);
+            }
+        });
+
+        chCoverLatinExt.setText("Latin Extented");
+        chCoverLatinExt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chCoverLatinExtActionPerformed(evt);
+            }
+        });
+
+        chCoverCyrillic.setText("Cyrillic");
+        chCoverCyrillic.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chCoverCyrillicActionPerformed(evt);
+            }
+        });
+
+        chCoverGreek.setText("Greek");
+        chCoverGreek.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chCoverGreekActionPerformed(evt);
+            }
+        });
+
+        chCoverJapanese.setText("Japanese");
+        chCoverJapanese.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chCoverJapaneseActionPerformed(evt);
+            }
+        });
+
+        radioPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         radioCharCoverage.setSelected(true);
         radioCharCoverage.setText("Char Coverage");
@@ -324,52 +355,35 @@ public class GUI extends javax.swing.JFrame {
             .addGroup(radioPanelLayout.createSequentialGroup()
                 .addComponent(radioCharCoverage)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(radioCharRange, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE))
+                .addComponent(radioCharRange)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
-
-        charCoveragePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Char Coverage", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
-
-        chCoverLatin.setText("Latin");
-        chCoverLatin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chCoverLatinActionPerformed(evt);
-            }
-        });
-
-        chCoverLatinExt.setText("Latin Extented");
-        chCoverLatinExt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chCoverLatinExtActionPerformed(evt);
-            }
-        });
-
-        chCoverCyrillic.setText("Cyrillic");
-        chCoverCyrillic.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chCoverCyrillicActionPerformed(evt);
-            }
-        });
-
-        chCoverGreek.setText("Greek");
-        chCoverGreek.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chCoverGreekActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout charCoveragePanelLayout = new javax.swing.GroupLayout(charCoveragePanel);
         charCoveragePanel.setLayout(charCoveragePanelLayout);
         charCoveragePanelLayout.setHorizontalGroup(
             charCoveragePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(charCoveragePanelLayout.createSequentialGroup()
-                .addComponent(chCoverLatin)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(charCoveragePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(radioPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(charCoveragePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chCoverLatinExt)
-                    .addComponent(chCoverCyrillic)
-                    .addComponent(chCoverGreek))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(charCoveragePanelLayout.createSequentialGroup()
+                        .addComponent(chCoverLatin)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(charCoveragePanelLayout.createSequentialGroup()
+                        .addGroup(charCoveragePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, charCoveragePanelLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(charCoveragePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(chCoverLatinExt, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(chCoverCyrillic, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addGroup(charCoveragePanelLayout.createSequentialGroup()
+                                .addGroup(charCoveragePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(chCoverGreek)
+                                    .addComponent(chCoverJapanese))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())))
         );
 
         charCoveragePanelLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {chCoverCyrillic, chCoverGreek, chCoverLatin, chCoverLatinExt});
@@ -377,14 +391,21 @@ public class GUI extends javax.swing.JFrame {
         charCoveragePanelLayout.setVerticalGroup(
             charCoveragePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(charCoveragePanelLayout.createSequentialGroup()
-                .addComponent(chCoverLatin)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(chCoverLatinExt)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(chCoverCyrillic)
+                .addGroup(charCoveragePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(charCoveragePanelLayout.createSequentialGroup()
+                        .addComponent(chCoverLatin)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(chCoverLatinExt)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(chCoverCyrillic))
+                    .addGroup(charCoveragePanelLayout.createSequentialGroup()
+                        .addComponent(radioPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(chCoverGreek)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(chCoverJapanese)
+                .addGap(18, 18, 18))
         );
 
         fontTestLabel.setText("Test:");
@@ -397,8 +418,6 @@ public class GUI extends javax.swing.JFrame {
                 fontPreviewButtonActionPerformed(evt);
             }
         });
-
-        udfc_suppd_label.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/alexanderstojanovich/udfc/res/udfc_suppd.png"))); // NOI18N
 
         javax.swing.GroupLayout fontPanelLayout = new javax.swing.GroupLayout(fontPanel);
         fontPanel.setLayout(fontPanelLayout);
@@ -416,14 +435,14 @@ public class GUI extends javax.swing.JFrame {
                                         .addComponent(fontBold)
                                         .addGap(12, 12, 12)
                                         .addComponent(fontItalic)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
                                         .addComponent(fontSizeLabel)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(fontSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(fontPanelLayout.createSequentialGroup()
                                         .addComponent(fontNameLabel)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(fontSelector, 0, 252, Short.MAX_VALUE)))
+                                        .addComponent(fontSelector, 0, 263, Short.MAX_VALUE)))
                                 .addGap(18, 18, 18)
                                 .addGroup(fontPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fontPanelLayout.createSequentialGroup()
@@ -437,7 +456,9 @@ public class GUI extends javax.swing.JFrame {
                                 .addGap(9, 9, 9))
                             .addGroup(fontPanelLayout.createSequentialGroup()
                                 .addGroup(fontPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(udfc_suppd_label)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, fontPanelLayout.createSequentialGroup()
+                                        .addComponent(charCoveragePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(173, 173, 173))
                                     .addGroup(fontPanelLayout.createSequentialGroup()
                                         .addComponent(fontTestLabel)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -447,10 +468,7 @@ public class GUI extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(tstLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(fontPanelLayout.createSequentialGroup()
-                        .addComponent(radioPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(charCoveragePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(240, 240, 240)
                         .addComponent(charRangePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
@@ -473,15 +491,11 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(textMultiplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(fontPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(radioPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(charCoveragePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(fontPanelLayout.createSequentialGroup()
-                        .addComponent(charRangePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(udfc_suppd_label, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(charCoveragePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(charRangePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(fontPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(fontPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                         .addComponent(tstLabel)
                         .addGap(44, 44, 44))
                     .addGroup(fontPanelLayout.createSequentialGroup()
@@ -493,11 +507,7 @@ public class GUI extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
-        fontPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {charRangePanel, radioPanel});
-
         getContentPane().add(fontPanel);
-
-        effectsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Effects", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP));
 
         fgLabel.setText("Foreground color:");
 
@@ -577,7 +587,6 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
-        palettePreview.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Palette", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP));
         palettePreview.setPreferredSize(new java.awt.Dimension(240, 240));
         palettePreview.setLayout(new java.awt.GridLayout(16, 16, 1, 1));
 
@@ -611,7 +620,7 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(outlineColorButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(bgButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(fgButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                         .addComponent(palettePreview, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(effectsPanelLayout.createSequentialGroup()
                         .addComponent(paletteSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -679,14 +688,12 @@ public class GUI extends javax.swing.JFrame {
                                 .addComponent(shadowAngleValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(useShadow)))
                     .addComponent(palettePreview, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 10, Short.MAX_VALUE))
+                .addGap(0, 51, Short.MAX_VALUE))
         );
 
         effectsPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {bgButton, fgButton, outlineColorButton});
 
         getContentPane().add(effectsPanel);
-
-        jobPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Job", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
         jobOutDir.setText("Output Directory...");
         jobOutDir.addActionListener(new java.awt.event.ActionListener() {
@@ -1067,6 +1074,17 @@ public class GUI extends javax.swing.JFrame {
         this.guiLogic.setReqSTOP(true);
     }//GEN-LAST:event_fileSTOPActionPerformed
 
+    private void chCoverJapaneseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chCoverJapaneseActionPerformed
+        // TODO add your handling code here:
+        if (chCoverJapanese.isSelected()) {
+            if (!guiLogic.getJobTaskList().contains(GUILogic.JPN_Hiragana)) {
+                guiLogic.getJobTaskList().add(GUILogic.JPN_Hiragana);
+            }
+        } else {
+            guiLogic.getJobTaskList().remove(GUILogic.JPN_Hiragana);
+        }
+    }//GEN-LAST:event_chCoverJapaneseActionPerformed
+
     // Center the GUI window into center of the screen
     private void initPosition() {
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
@@ -1320,6 +1338,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel bgLabel;
     private javax.swing.JCheckBox chCoverCyrillic;
     private javax.swing.JCheckBox chCoverGreek;
+    private javax.swing.JCheckBox chCoverJapanese;
     private javax.swing.JCheckBox chCoverLatin;
     private javax.swing.JCheckBox chCoverLatinExt;
     private javax.swing.JPanel charCoveragePanel;
@@ -1377,7 +1396,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JSpinner textMultiplier;
     private javax.swing.JLabel textMultiplierLabel;
     private javax.swing.JLabel tstLabel;
-    private javax.swing.JLabel udfc_suppd_label;
     private javax.swing.JCheckBox useAntialiasing;
     private javax.swing.JCheckBox useGradient;
     private javax.swing.JCheckBox useOutline;
