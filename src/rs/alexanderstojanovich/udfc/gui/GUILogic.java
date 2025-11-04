@@ -268,22 +268,6 @@ public class GUILogic {
         }
         chRender.drawGlyphVector(gv, (float) (0.5f * sampler), (float) (0.5f * sampler));
 
-        //if antialiasing is selected multiply color with it's alpha
-        if (useAntialias) {
-            for (int px = 0; px < chImg.getWidth(); px++) {
-                for (int py = 0; py < chImg.getHeight(); py++) {
-                    Color srcCol = new Color(chImg.getRGB(px, py), true);
-                    if (srcCol.getAlpha() > 0) { // this if is in order to not ruin the borders around the chars
-                        Color dstCol = new Color( // constructor with the three floats is called
-                                (srcCol.getAlpha() / 255.0f) * (srcCol.getRed() / 255.0f),
-                                (srcCol.getAlpha() / 255.0f) * (srcCol.getGreen() / 255.0f),
-                                (srcCol.getAlpha() / 255.0f) * (srcCol.getBlue() / 255.0f)
-                        );
-                        chImg.setRGB(px, py, dstCol.getRGB());
-                    }
-                }
-            }
-        }
         // if outline is selected;
         if (outlineWidth > 0) {
             // Copy of raster of unaltered image is needed!!
@@ -338,6 +322,25 @@ public class GUILogic {
                 }
             }
         }
+        
+        //if antialiasing is selected multiply color with it's alpha
+        //RIVER_SALMON: temporarily comment this out since this is not the way UZDoom composites text glyphs currently.
+        //if (useAntialias) {
+        //    for (int px = 0; px < chImg.getWidth(); px++) {
+        //        for (int py = 0; py < chImg.getHeight(); py++) {
+        //            Color srcCol = new Color(chImg.getRGB(px, py), true);
+        //            if (srcCol.getAlpha() > 0) { // this if is in order to not ruin the borders around the chars
+        //                Color dstCol = new Color( // constructor with the three floats is called
+        //                        (srcCol.getAlpha() / 255.0f) * (srcCol.getRed() / 255.0f),
+        //                        (srcCol.getAlpha() / 255.0f) * (srcCol.getGreen() / 255.0f),
+        //                        (srcCol.getAlpha() / 255.0f) * (srcCol.getBlue() / 255.0f)
+        //                );
+        //                chImg.setRGB(px, py, dstCol.getRGB());
+        //                
+         //           }
+        //        }
+         //   }
+        //}
 
         // if user chose palette in the image, make conversion..
         if (Palette.isLoaded()) {

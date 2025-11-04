@@ -398,7 +398,7 @@ public class GUI extends javax.swing.JFrame {
                 .addComponent(chCoverGreek)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(chCoverJapanese)
-                .addGap(18, 18, 18))
+                .addGap(44, 44, 44))
         );
 
         fontTestLabel.setText("Test:");
@@ -481,7 +481,7 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(charRangePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(fontPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(fontPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                         .addComponent(tstLabel)
                         .addGap(44, 44, 44))
                     .addGroup(fontPanelLayout.createSequentialGroup()
@@ -674,7 +674,7 @@ public class GUI extends javax.swing.JFrame {
                                 .addComponent(shadowAngleValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(useShadow)))
                     .addComponent(palettePreview, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 51, Short.MAX_VALUE))
+                .addGap(0, 38, Short.MAX_VALUE))
         );
 
         effectsPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {bgButton, fgButton, outlineColorButton});
